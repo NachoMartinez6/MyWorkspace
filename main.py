@@ -1,6 +1,6 @@
 
 # Importamos la libreria de fastapi -> pip install fastapi[all]  
-from fastapi import FastAPI
+from fastapi import FastAPI, Response
 
 
 
@@ -15,3 +15,8 @@ async def root():
         "status_code": 200,
         "message": "Hola FastAPI!"
     }}
+
+
+@app.head("/", include_in_schema=False)
+def root_head():
+    return Response(status_code=200)
